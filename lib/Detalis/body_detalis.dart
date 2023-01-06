@@ -8,6 +8,7 @@ import 'package:doctor_app/HOME/page_home.dart';
 class DetailsBody extends StatefulWidget {
   final Product product;
 
+
   const DetailsBody({Key, key, required this.product}) : super(key: key);
 
   @override
@@ -16,6 +17,7 @@ class DetailsBody extends StatefulWidget {
 
 class _DetailsBodyState extends State<DetailsBody> {
   @override
+
   DateTime data = DateTime.now();
   bool checedin = false;
   var TextFieldvalue;
@@ -129,6 +131,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                     ),
                     Text(
                       widget.product.email,
+
                       style: GoogleFonts.almarai(
                           textStyle:
                               TextStyle(fontSize: 15, color: Colors.black87)),
@@ -304,8 +307,8 @@ class _DetailsBodyState extends State<DetailsBody> {
                                       dialogType: DialogType.success,
                                       headerAnimationLoop: false,
                                       animType: AnimType.bottomSlide,
-                                      title: 'Question',
-                                      desc: 'Dialog description here...',
+                                      title: 'success',
+                                      desc: ' Your Reservation is success',
                                       buttonsTextStyle:
                                           const TextStyle(color: Colors.black),
                                       showCloseIcon: true,

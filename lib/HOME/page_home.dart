@@ -1,6 +1,10 @@
 import 'dart:convert';
 import 'package:doctor_app/Auth/Controller.dart';
+
+import 'package:doctor_app/HOME/See_all.dart';
 import 'package:flutter/gestures.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -8,46 +12,83 @@ import 'package:doctor_app/HOME/models.dart';
 import 'package:doctor_app/Card/Doctor_card.dart';
 import 'package:doctor_app/Detalis/Detalis.dart';
 
+
+
 class home extends StatefulWidget {
   @override
   State<home> createState() => homeState();
 }
 
 class homeState extends State<home> {
-  // late final User user;
-
-  // bool _loading = false;
-
+  // final Product product;
+ // static var fristname;
+ // static var email;
   List<dynamic> fuondusers = [];
-  List<dynamic> resulte = [];
+//Product pro=Product(firstName: fristname, email: email);
+  //
+  // List<Map<String, var>> locations = [
+  //   {
+  //   "fristname" : fristname,}
+  // ]
 
-  var getvalue = "filter";
-  var reds = "";
 
-  List currenciesList = [
-    'bones',
-    'heart',
+
+  List<dynamic> resulte = [
+    //fristname,
 
   ];
 
+  var getvalue = "filter";
+ // Product ali=Product(firstName: 'fristname');
+  final products_pro = Product;
+  List currenciesList = [
+    'bones',
+    'heart',
+  ];
+
+  // Future loadUserList() async {
+  //   setState(() async {
+  //     var res = await http.get(Uri.https("dummyjson.com", "users"));
+  //     if (res.statusCode == 200) {
+  //       var jsonData = jsonDecode(res.body);
+  //       if (jsonData['users'].isNotEmpty) {
+  //         setState(() {
+  //           products = jsonData['users'];
+  //
+  //           // _loading = false;
+  //         });
+  //       }
+  //     } else {
+  //       var ali = res.statusCode;
+  //       print(ali);
+  //     }
+  //   });
+  // }
+
   @override
   void initState() {
+    // fuondusers.addAll([product.firstName,product.email]);
     fuondusers = products;
-    var pri=fuondusers;
+  //  var re=products_pro as List;
+    var pri = fuondusers;
+    for (var age in fuondusers){
+      print(age);
+    }
     print(pri);
-      resulte = products;
+    resulte = products;
 
     super.initState();
   }
+
   void _runfilter(String enteredkey) {
     List<dynamic> resulte = [];
     if (enteredkey.isEmpty) {
-      resulte = products;
+      resulte = products_pro as List;
     } else {
       resulte = products
-          .where((user) => user["firstName"]
-          .toLowerCase()
-          .contains(enteredkey.toLowerCase()))
+          .where((user) => user.firstName
+              .toLowerCase()
+              .contains(enteredkey.toLowerCase()))
           .toList(); //<- change
     }
     setState(() {
@@ -55,24 +96,7 @@ class homeState extends State<home> {
     });
   }
 
-  Future loadUserList() async {
-    setState(() async {
-      var res = await http.get(Uri.https("dummyjson.com", "users"));
-      if (res.statusCode == 200) {
-        var jsonData = jsonDecode(res.body);
-        if (jsonData['users'].isNotEmpty) {
-          setState(() {
-            products = jsonData['users'];
 
-            // _loading = false;
-          });
-        }
-      } else {
-        var ali = res.statusCode;
-        print(ali);
-      }
-    });
-  }
 
   List<DropdownMenuItem> getDrop() {
     List<DropdownMenuItem<String>> dropdownitem = [];
@@ -85,32 +109,21 @@ class homeState extends State<home> {
     return dropdownitem;
   }
 
- /* void _runfilter(String enteredkey) {
 
+
+  void runfilterSearch(String enteredkey) {
+    List<dynamic> resulte = [];
     if (enteredkey.isEmpty) {
       resulte = products;
     } else {
       resulte = products
           .where((user) =>
-              user.Products.toLowerCase().contains(enteredkey.toLowerCase()))
+          user.email.toLowerCase().contains(enteredkey.toLowerCase()))
           .toList(); //<- change
     }
     setState(() {
       fuondusers = resulte;
     });
-  }*/
-
-  void _runfilterSearch(String enteredkey) {
-    if (enteredkey.isEmpty) {
-      setState(() {
-        resulte = products;
-      });
-    } else {
-      resulte = products
-          .where((user) =>
-              user.firstName.toLowerCase().contains(enteredkey.toLowerCase()))
-          .toList(); //<- change
-    }
   }
 
   late DateTime _selectedDate;
@@ -208,7 +221,7 @@ class homeState extends State<home> {
                   width: s * 0.9,
                   height: 50,
                   child: TextField(
-                    onChanged: (value) => _runfilterSearch(value),
+                    onChanged: (value) => _runfilter(value),
                     decoration: InputDecoration(
                       hintText: "Search",
                       prefixIcon: Icon(
@@ -251,11 +264,23 @@ class homeState extends State<home> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(
-                "See All",
-                style: GoogleFonts.almarai(
-                    textStyle: TextStyle(fontSize: 15, color: Colors.black87)),
-              ),
+              RichText(
+                  text: TextSpan(
+                      text: "",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                      ),
+                      children: [
+                    TextSpan(
+                        text: "See All",
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Get.to(() => See_All()))
+                  ])),
               SizedBox(
                 width: 220,
               ),
@@ -271,7 +296,7 @@ class homeState extends State<home> {
                   setState(() {
                     getvalue = value;
                     print('$getvalue');
-                    _runfilter(getvalue);
+                    runfilterSearch(getvalue);
                   });
                 },
                 icon: Icon(Icons.filter_list),
@@ -303,17 +328,16 @@ class homeState extends State<home> {
                 height: 570,
                 width: s,
                 child: ListView.builder(
-
-                  itemCount:fuondusers.length,
+                  itemCount: fuondusers.length,
                   itemBuilder: (context, index) => DoctortCard(
                     itemIndex: index,
-                    product: products[index],
+                    product:fuondusers[index],
                     press: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => DetailsScreen(
-                            product: products[index],
+                            product: fuondusers[index],
                           ),
                         ),
                       );

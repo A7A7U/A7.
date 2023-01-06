@@ -5,6 +5,7 @@ class check extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
         body:  SafeArea(
@@ -43,7 +44,7 @@ class check extends StatelessWidget {
                   ),
                     GestureDetector(
                       onTap: () {
-                         Authcontroller.instance.user();
+                         Authcontroller.instance.user_sign();
                       },
                       child: Container(
 

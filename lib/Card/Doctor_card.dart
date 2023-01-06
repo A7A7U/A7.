@@ -1,3 +1,4 @@
+import 'package:doctor_app/HOME/page_home.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_app/HOME/models.dart';
 import 'package:doctor_app/HOME/constent.dart';
@@ -21,6 +22,8 @@ class DoctortCard extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     //double s = MediaQuery.of(context).size.width;
     double y = MediaQuery.of(context).size.height;
+    homeState Home=homeState();
+    Home.fuondusers.addAll([product.firstName,product.email]);
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: kDefaultPadding,
@@ -84,7 +87,9 @@ class DoctortCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      ' Doctor:${product.firstName}',
+                     ' Doctor:${Home.fuondusers.first}',
+
+                      //' Doctor:${product.firstName}',
                       style: GoogleFonts.alumniSans(
                           textStyle:
                               TextStyle(fontSize: 18, color: Colors.black87)),

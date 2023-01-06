@@ -41,7 +41,7 @@ class Authcontroller extends GetxController {
     Get.offAll(() => Check_req());
   }
   void gohome(){
-    Get.offAll(() => home());
+    Get.offAll(() => check());
   }
   void DoctorRes(){
     Get.offAll(() => DoctorResponse());
@@ -49,6 +49,10 @@ class Authcontroller extends GetxController {
   void backChoce(){
     Get.offAll(() => check());
   }
+  void gethome(){
+    Get.offAll(() => home());
+  }
+
 
 
 
@@ -61,15 +65,9 @@ class Authcontroller extends GetxController {
     }
   }
 
-  void back() {
-    try {
-      Get.offAll(() => check());
-    } catch (e) {
-      print(e);
-    }
-  }
 
-  void user() {
+
+  void user_sign() {
     try {
       Get.offAll(() => Loginpage());
     } catch (e) {

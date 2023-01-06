@@ -26,7 +26,7 @@ class Check_req extends StatelessWidget {
                       Icons.arrow_back_ios_sharp,
                     ),
                     onPressed: () {
-                      Authcontroller.instance.gohome();
+                      Authcontroller.instance.gethome();
                     },
                   ),
                   Text(

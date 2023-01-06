@@ -3,6 +3,9 @@ import 'package:doctor_app/Auth/Sign_up.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../HOME/constent.dart';
 
 
 
@@ -33,6 +36,27 @@ class _LoginpageState extends State<Loginpage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  Container(
+                    child: Row(
+                      children: [
+                        IconButton(
+                          padding: EdgeInsets.only(right: kDefaultPadding),
+                          icon: Icon(
+                            Icons.arrow_back_ios_sharp,
+                          ),
+                          onPressed: () {
+                            Authcontroller.instance.gohome();
+                          },
+                        ),
+                        Text(
+                          "Back",
+                          style: GoogleFonts.alike(
+                              textStyle:
+                              TextStyle(fontSize: 15, color: Colors.black87)),
+                        ),
+                      ],
+                    ),
+                  ),
                   Container(
                     width: 300,
                     height: 300
@@ -141,10 +165,7 @@ class _LoginpageState extends State<Loginpage> {
                     Expanded(
                       child: Container(),
                     ),
-                    Text(
-                      "Forgot your password?   ",
-                      style: TextStyle(fontSize: 20, color: Colors.grey),
-                    )
+
                   ]),
                   SizedBox(
                     height: 22,
@@ -175,7 +196,7 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ),
                   SizedBox(
-                    height: 60,
+                    height: 30,
                   ),
                   RichText(
                       text: TextSpan(
@@ -193,7 +214,8 @@ class _LoginpageState extends State<Loginpage> {
                                     fontWeight: FontWeight.bold),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () => Get.to(() => sign_up()))
-                            ]))
+                            ])),
+
                 ],
               ),
             ),

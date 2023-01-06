@@ -1,3 +1,5 @@
+
+
 class Product {
   final String firstName, email, image;
   final int phone;
@@ -9,6 +11,7 @@ class Product {
     required this.image,
   });
 }
+
 
 class RequstIT {
   final String reservations;
@@ -29,34 +32,34 @@ class Response {
 }
 
 // list of products
-List<dynamic> products = [
+List<dynamic> products  = [
   Product(
-    firstName: "Smcmdmckdddsdcsdc",
+    firstName: "Smcmdm ",
     email: "heart",
     phone: 55557567569,
     image: "images/pol.jpg",
   ),
   Product(
-    firstName: "Smcmdmckdddsdcsdc",
+    firstName: "tytsdc",
     email: "heart",
     phone: 57756756759,
     image: "images/pol.jpg",
   ),
   Product(
-    firstName: "Smcmdmckdddcdcsdc",
+    firstName: " gfdcdcsdc",
     email: "bones",
     phone: 585675675789,
     image: "images/pol.jpg",
   ),
   Product(
-    firstName: "Smcmdmckdddddcsdc",
+    firstName: "bbcdc",
     email: "bones",
     phone: 256567567259,
     image: "images/pol.jpg",
   ),
   Product(
-    firstName: "bones",
-    email: "djkkdvk@gmail.com",
+    firstName: "rtrsssssss",
+    email: "bones",
     phone: 5565898896859889,
     image: "images/360.jpg",
   ),
