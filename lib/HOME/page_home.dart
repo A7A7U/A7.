@@ -1,18 +1,13 @@
-import 'dart:convert';
 import 'package:doctor_app/Auth/Controller.dart';
-
 import 'package:doctor_app/HOME/See_all.dart';
 import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:doctor_app/HOME/models.dart';
 import 'package:doctor_app/Card/Doctor_card.dart';
 import 'package:doctor_app/Detalis/Detalis.dart';
-
-
 
 class home extends StatefulWidget {
   @override
@@ -21,8 +16,8 @@ class home extends StatefulWidget {
 
 class homeState extends State<home> {
   // final Product product;
- // static var fristname;
- // static var email;
+  // static var fristname;
+  // static var email;
   List<dynamic> fuondusers = [];
 //Product pro=Product(firstName: fristname, email: email);
   //
@@ -31,19 +26,17 @@ class homeState extends State<home> {
   //   "fristname" : fristname,}
   // ]
 
-
-
   List<dynamic> resulte = [
     //fristname,
-
   ];
 
   var getvalue = "filter";
- // Product ali=Product(firstName: 'fristname');
+  // Product ali=Product(firstName: 'fristname');
   final products_pro = Product;
   List currenciesList = [
     'bones',
     'heart',
+    'All',
   ];
 
   // Future loadUserList() async {
@@ -69,9 +62,9 @@ class homeState extends State<home> {
   void initState() {
     // fuondusers.addAll([product.firstName,product.email]);
     fuondusers = products;
-  //  var re=products_pro as List;
+    //  var re=products_pro as List;
     var pri = fuondusers;
-    for (var age in fuondusers){
+    for (var age in fuondusers) {
       print(age);
     }
     print(pri);
@@ -86,17 +79,14 @@ class homeState extends State<home> {
       resulte = products_pro as List;
     } else {
       resulte = products
-          .where((user) => user.firstName
-              .toLowerCase()
-              .contains(enteredkey.toLowerCase()))
+          .where((user) =>
+              user.firstName.toLowerCase().contains(enteredkey.toLowerCase()))
           .toList(); //<- change
     }
     setState(() {
       fuondusers = resulte;
     });
   }
-
-
 
   List<DropdownMenuItem> getDrop() {
     List<DropdownMenuItem<String>> dropdownitem = [];
@@ -109,8 +99,6 @@ class homeState extends State<home> {
     return dropdownitem;
   }
 
-
-
   void runfilterSearch(String enteredkey) {
     List<dynamic> resulte = [];
     if (enteredkey.isEmpty) {
@@ -118,7 +106,7 @@ class homeState extends State<home> {
     } else {
       resulte = products
           .where((user) =>
-          user.email.toLowerCase().contains(enteredkey.toLowerCase()))
+              user.email.toLowerCase().contains(enteredkey.toLowerCase()))
           .toList(); //<- change
     }
     setState(() {
@@ -131,19 +119,13 @@ class homeState extends State<home> {
     showDatePicker(
             context: context,
             initialDate: DateTime.now(),
-            //which date will display when user open the picker
             firstDate: DateTime(1950),
-            //what will be the previous supported year in picker
-            lastDate: DateTime
-                .now()) //what will be the up to supported date in picker
+            lastDate: DateTime.now())
         .then((pickedDate) {
-      //then usually do the future job
       if (pickedDate == null) {
-        //if user tap cancel then this function will stop
         return;
       }
       setState(() {
-        //for rebuilding the ui
         _selectedDate = pickedDate;
       });
     });
@@ -331,7 +313,7 @@ class homeState extends State<home> {
                   itemCount: fuondusers.length,
                   itemBuilder: (context, index) => DoctortCard(
                     itemIndex: index,
-                    product:fuondusers[index],
+                    product: fuondusers[index],
                     press: () {
                       Navigator.push(
                         context,

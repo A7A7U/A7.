@@ -205,7 +205,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                         hintText: " Your Name",
                         prefixIcon: Icon(
                           Icons.person,
-                          color: Color(0xff90CAF9),
+                          color: Color(0xff90CAF2),
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -228,7 +228,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                               width: s * 0.13,
                               height: y * 0.05,
                               decoration: BoxDecoration(
-                                color: Color(0xff90CAF9),
+                                color: Color(0xff90CAF2),
                                 borderRadius: BorderRadius.only(
                                   bottomRight: Radius.circular(18),
                                   bottomLeft: Radius.circular(18),
@@ -271,10 +271,18 @@ class _DetailsBodyState extends State<DetailsBody> {
                           height: 14,
                         ),
                         Container(
-                          //  margin: EdgeInsetsDirectional.only(start: 69),
+                          decoration: BoxDecoration(
+                            color: Colors.white12,
+                            borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(38),
+                              bottomLeft: Radius.circular(38),
+                                 topLeft:   Radius.circular(38),
+                              topRight :   Radius.circular(38)
+                            ),
+                          ),
                           width: s * 0.5,
                           height: y * 0.07,
-                          color: Colors.white12,
+
                           child: checedin == false
                               ? AnimatedButton(
                                   color: Color(0xff90CAF2),
@@ -286,7 +294,7 @@ class _DetailsBodyState extends State<DetailsBody> {
                                       headerAnimationLoop: false,
                                       animType: AnimType.bottomSlide,
                                       title: 'Error',
-                                      desc: 'Check your data or name...',
+                                      desc: 'Check your date or name...',
                                       buttonsTextStyle:
                                           const TextStyle(color: Colors.black),
                                       showCloseIcon: true,
